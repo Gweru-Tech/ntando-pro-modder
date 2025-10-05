@@ -1,0 +1,2168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ntando Mods - Premium Gaming Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 100px;
+            padding: 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 20px rgba(255, 255, 255, 0.5); }
+            to { text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 40px rgba(255, 107, 107, 0.5); }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Services Grid */
+        .services {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .service-card:hover::before {
+            animation: shine 0.5s ease-in-out;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: left;
+        }
+
+        .contact-info h4 {
+            color: #4ecdc4;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .contact-method i {
+            margin-right: 0.5rem;
+            color: #ff6b6b;
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* Admin Panel */
+        .admin-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(255, 107, 107, 0.8);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .admin-btn:hover {
+            background: rgba(255, 107, 107, 1);
+            transform: scale(1.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 2% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 95%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close {
+            color: white;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .close:hover {
+            color: #ff6b6b;
+            transform: scale(1.2);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Audio Controls */
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .audio-controls button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .audio-controls button:hover {
+            color: #ff6b6b;
+            transform: scale(1.2);
+        }
+
+        /* Settings Panel */
+        .settings-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        /* Tabs */
+        .admin-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-content {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+        }
+
+        /* Statistics Dashboard */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+
+        /* Notification System */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 3000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            border-left: 4px solid #4ecdc4;
+        }
+
+        .notification.error {
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .notification.warning {
+            border-left: 4px solid #ffa726;
+        }
+
+        /* Theme Selector */
+        .theme-selector {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .theme-option {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .theme-option:hover,
+        .theme-option.active {
+            border-color: white;
+            transform: scale(1.1);
+        }
+
+        .theme-default { background: linear-gradient(45deg, #667eea, #764ba2); }
+        .theme-sunset { background: linear-gradient(45deg, #ff9a9e, #fecfef); }
+        .theme-ocean { background: linear-gradient(45deg, #667eea, #764ba2); }
+        .theme-forest { background: linear-gradient(45deg, #11998e, #38ef7d); }
+        .theme-dark { background: linear-gradient(45deg, #2c3e50, #34495e); }
+
+        /* Analytics */
+        .analytics-chart {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 5% auto;
+            }
+
+            .admin-tabs {
+                flex-direction: column;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success/Error Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .success {
+            background: rgba(76, 175, 80, 0.8);
+            color: white;
+        }
+
+        .error {
+            background: rgba(244, 67, 54, 0.8);
+            color: white;
+        }
+
+        /* Service Management */
+        .service-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .service-toggle {
+            background: none;
+            border: 2px solid #4ecdc4;
+            color: #4ecdc4;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .service-toggle:hover {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .service-toggle.active {
+            background: #ff6b6b;
+            border-color: #ff6b6b;
+            color: white;
+        }
+
+        /* Contact Methods Grid */
+        .contact-methods-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .contact-method-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Backup & Export */
+        .backup-section {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1rem 0;
+        }
+
+        /* Click effect animation */
+        @keyframes clickEffect {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation" id="bgAnimation"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Background Audio -->
+    <audio id="bgAudio" loop>
+        <source src="https://files.catbox.moe/8wf7un.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo" id="siteLogo">
+                <i class="fas fa-gamepad"></i> Ntando Mods
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="#services"><i class="fas fa-cogs"></i> Services</a></li>
+                <li><a href="#about"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <section class="hero" id="home">
+            <h1><i class="fas fa-rocket"></i> Welcome to <span id="heroTitle">Ntando Mods</span></h1>
+            <p id="heroSubtitle">Premium Gaming Services & Modifications</p>
+            <p id="heroDescription">Unlock the ultimate gaming experience with our professional modding services</p>
+            <a href="#services" class="btn">
+                <i class="fas fa-play"></i> Explore Services
+            </a>
+            <a href="#contact" class="btn">
+                <i class="fas fa-phone"></i> Get Started
+            </a>
+        </section>
+
+        <section class="services" id="services">
+            <h2><i class="fas fa-star"></i> Our Services</h2>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be loaded here -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+        <button onclick="toggleAudio()" id="audioBtn">
+            <i class="fas fa-volume-up"></i>
+        </button>
+        <button onclick="changeVolume(-0.1)">
+            <i class="fas fa-volume-down"></i>
+        </button>
+        <button onclick="changeVolume(0.1)">
+            <i class="fas fa-volume-up"></i>
+        </button>
+    </div>
+
+    <!-- Admin Button -->
+    <button class="admin-btn" onclick="openAdminPanel()">
+        <i class="fas fa-cog"></i>
+    </button>
+
+    <!-- Admin Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loginModal')">×</span>
+            <h2><i class="fas fa-lock"></i> Admin Login</h2>
+            <form onsubmit="adminLogin(event)">
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('adminModal')">×</span>
+            <h2><i class="fas fa-tools"></i> Admin Panel</h2>
+            
+            <!-- Tabs -->
+            <div class="admin-tabs">
+                <button class="btn" onclick="showTab('dashboard-tab')">
+                    <i class="fas fa-chart-bar"></i> Dashboard
+                </button>
+                <button class="btn" onclick="showTab('services-tab')">
+                    <i class="fas fa-list"></i> Services
+                </button>
+                <button class="btn" onclick="showTab('add-service-tab')">
+                    <i class="fas fa-plus"></i> Add Service
+                </button>
+                <button class="btn" onclick="showTab('contact-tab')">
+                    <i class="fas fa-address-book"></i> Contact Methods
+                </button>
+                <button class="btn" onclick="showTab('settings-tab')">
+                    <i class="fas fa-cog"></i> Settings
+                </button>
+                <button class="btn" onclick="showTab('backup-tab')">
+                    <i class="fas fa-download"></i> Backup
+                </button>
+            </div>
+
+            <!-- Dashboard Tab -->
+            <div id="dashboard-tab" class="tab-content">
+                <h3><i class="fas fa-chart-line"></i> Dashboard</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalServices">0</div>
+                        <div>Total Services</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="activeServices">0</div>
+                        <div>Active Services</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="totalViews">0</div>
+                        <div>Page Views</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="contactMethods">0</div>
+                        <div>Contact Methods</div>
+                    </div>
+                </div>
+                
+                <div class="analytics-chart">
+                    <h4><i class="fas fa-chart-area"></i> Recent Activity</h4>
+                    <p>Last login: <span id="lastLogin">Never</span></p>
+                    <p>Services created today: <span id="servicesToday">0</span></p>
+                    <p>System status: <span style="color: #4ecdc4;">Online</span></p>
+                </div>
+            </div>
+
+            <!-- Services Management Tab -->
+            <div id="services-tab" class="tab-content" style="display: none;">
+                <h3><i class="fas fa-list"></i> Manage Services</h3>
+                <div id="servicesList">
+                    <!-- Services list will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Add Service Tab -->
+            <div id="add-service-tab" class="tab-content" style="display: none;">
+                <h3><i class="fas fa-plus"></i> Add New Service</h3>
+                <form onsubmit="addService(event)">
+                    <div class="form-group">
+                        <label for="serviceName">Service Name:</label>
+                        <input type="text" id="serviceName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceDescription">Description:</label>
+                        <textarea id="serviceDescription" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="servicePrice">Price:</label>
+                        <input type="text" id="servicePrice" placeholder="e.g., $29.99" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceIcon">Icon (Font Awesome class):</label>
+                        <input type="text" id="serviceIcon" placeholder="e.g., fas fa-gamepad" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceImage">Image URL:</label>
+                        <input type="url" id="serviceImage" placeholder="https://example.com/image.jpg">
+                    </div>
+                    <div class="form-group">
+                        <label for="serviceCategory">Category:</label>
+                        <select id="serviceCategory">
+                            <option value="modding">Modding</option>
+                            <option value="cheats">Cheats</option>
+                            <option value="accounts">Accounts</option>
+                            <option value="scripts">Scripts</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-plus"></i> Add Service
+                    </button>
+                </form>
+            </div>
+
+            <!-- Contact Methods Tab -->
+            <div id="contact-tab" class="tab-content" style="display: none;">
+                <h3><i class="fas fa-address-book"></i> Contact Methods</h3>
+                <div class="contact-methods-grid" id="contactMethodsList">
+                    <!-- Contact methods will be loaded here -->
+                </div>
+                
+                <h4><i class="fas fa-plus"></i> Add Contact Method</h4>
+                <form onsubmit="addContactMethod(event)">
+                    <div class="form-group">
+                        <label for="contactType">Contact Type:</label>
+                        <select id="contactType" required>
+                            <option value="">Select Type</option>
+                            <option value="discord">Discord</option>
+                            <option value="telegram">Telegram</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="email">Email</option>
+                            <option value="phone">Phone</option>
+                            <option value="website">Website</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactLabel">Label:</label>
+                        <input type="text" id="contactLabel" placeholder="e.g., Support Discord" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactValue">Contact Info:</label>
+                        <input type="text" id="contactValue" placeholder="e.g., username#1234" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactIcon">Icon (Font Awesome class):</label>
+                        <input type="text" id="contactIcon" placeholder="e.g., fab fa-discord">
+                    </div>
+                    <button type="submit" class="btn">
+                        <i class="fas fa-plus"></i> Add Contact Method
+                    </button>
+                </form>
+            </div>
+
+            <!-- Settings Tab -->
+            <div id="settings-tab" class="tab-content" style="display: none;">
+                <h3><i class="fas fa-cog"></i> Website Settings</h3>
+                
+                <div class="settings-panel">
+                    <h4><i class="fas fa-palette"></i> Theme Settings</h4>
+                    <div class="theme-selector">
+                        <div class="theme-option theme-default" onclick="changeTheme('default')" title="Default"></div>
+                        <div class="theme-option theme-sunset" onclick="changeTheme('sunset')" title="Sunset"></div>
+                        <div class="theme-option theme-ocean" onclick="changeTheme('ocean')" title="Ocean"></div>
+                        <div class="theme-option theme-forest" onclick="changeTheme('forest')" title="Forest"></div>
+                        <div class="theme-option theme-dark" onclick="changeTheme('dark')" title="Dark"></div>
+                    </div>
+                </div>
+
+                <div class="settings-panel">
+                    <div class="form-group">
+                        <label for="siteDomain">Custom Domain:</label>
+                        <input type="text" id="siteDomain" placeholder="yourdomain.com">
+                        <button class="btn" onclick="updateDomain()">
+                            <i class="fas fa-save"></i> Update Domain
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Change Admin Password:</label>
+                        <input type="password" id="newPassword" placeholder="New password">
+                        <button class="btn" onclick="updatePassword()">
+                            <i class="fas fa-key"></i> Update Password
+                                                <button class="btn" onclick="updatePassword()">
+                            <i class="fas fa-key"></i> Update Password
+                        </button>
+                    </div>
+                </div>
+
+                <div class="settings-panel">
+                    <h4><i class="fas fa-credit-card"></i> Payment Methods</h4>
+                    <div class="payment-methods-grid" id="paymentMethodsList">
+                        <!-- Payment methods will be loaded here -->
+                    </div>
+                    
+                    <h5><i class="fas fa-plus"></i> Add Payment Method</h5>
+                    <form onsubmit="addPaymentMethod(event)">
+                        <div class="form-group">
+                            <label for="paymentType">Payment Type:</label>
+                            <select id="paymentType" required>
+                                <option value="">Select Type</option>
+                                <option value="ecocash">EcoCash</option>
+                                <option value="ibucks">iBucks</option>
+                                <option value="airtime">Airtime</option>
+                                <option value="paypal">PayPal</option>
+                                <option value="bitcoin">Bitcoin</option>
+                                <option value="bank">Bank Transfer</option>
+                                <option value="custom">Custom</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="paymentLabel">Label:</label>
+                            <input type="text" id="paymentLabel" placeholder="e.g., EcoCash Payment" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="paymentDetails">Payment Details:</label>
+                            <input type="text" id="paymentDetails" placeholder="e.g., 263777124998" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="paymentIcon">Icon (Font Awesome class):</label>
+                            <input type="text" id="paymentIcon" placeholder="e.g., fas fa-mobile-alt">
+                        </div>
+                        <button type="submit" class="btn">
+                            <i class="fas fa-plus"></i> Add Payment Method
+                        </button>
+                    </form>
+                </div>
+
+                <div class="settings-panel">
+                    <h4><i class="fas fa-edit"></i> Site Content</h4>
+                    <div class="form-group">
+                        <label for="siteTitle">Site Title:</label>
+                        <input type="text" id="siteTitle" placeholder="Ntando Mods">
+                    </div>
+                    <div class="form-group">
+                        <label for="siteSubtitle">Site Subtitle:</label>
+                        <input type="text" id="siteSubtitle" placeholder="Premium Gaming Services">
+                    </div>
+                    <div class="form-group">
+                        <label for="siteDescription">Site Description:</label>
+                        <textarea id="siteDescription" rows="3" placeholder="Unlock the ultimate gaming experience..."></textarea>
+                    </div>
+                    <button class="btn" onclick="updateSiteContent()">
+                        <i class="fas fa-save"></i> Update Content
+                    </button>
+                </div>
+            </div>
+
+            <!-- Backup Tab -->
+            <div id="backup-tab" class="tab-content" style="display: none;">
+                <h3><i class="fas fa-download"></i> Backup & Export</h3>
+                
+                <div class="backup-section">
+                    <h4><i class="fas fa-database"></i> Data Management</h4>
+                    <button class="btn" onclick="exportData()">
+                        <i class="fas fa-download"></i> Export All Data
+                    </button>
+                    <button class="btn" onclick="importData()">
+                        <i class="fas fa-upload"></i> Import Data
+                    </button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;" onchange="handleImport(event)">
+                </div>
+
+                <div class="backup-section">
+                    <h4><i class="fas fa-trash"></i> Reset Options</h4>
+                    <button class="btn" onclick="resetServices()" style="background: linear-gradient(45deg, #ff6b6b, #ff8e53);">
+                        <i class="fas fa-trash"></i> Clear All Services
+                    </button>
+                    <button class="btn" onclick="resetAll()" style="background: linear-gradient(45deg, #ff4757, #ff3742);">
+                        <i class="fas fa-exclamation-triangle"></i> Reset Everything
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Container -->
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Global Variables
+        let isLoggedIn = false;
+        let services = [];
+        let contactMethods = [];
+        let paymentMethods = [];
+        let settings = {
+            theme: 'default',
+            siteTitle: 'Ntando Mods',
+            siteSubtitle: 'Premium Gaming Services & Modifications',
+            siteDescription: 'Unlock the ultimate gaming experience with our professional modding services',
+            domain: '',
+            adminPassword: 'admin123'
+        };
+
+        // Initialize the website
+        document.addEventListener('DOMContentLoaded', function() {
+            loadData();
+            createParticles();
+            updateStats();
+            loadDefaultData();
+            
+            // Track page views
+            let views = parseInt(localStorage.getItem('pageViews') || '0');
+            views++;
+            localStorage.setItem('pageViews', views.toString());
+            
+            // Auto-play audio with user interaction
+            document.addEventListener('click', function() {
+                const audio = document.getElementById('bgAudio');
+                if (audio.paused) {
+                    audio.play().catch(e => console.log('Audio autoplay prevented'));
+                }
+            }, { once: true });
+        });
+
+        // Load default data on first visit
+        function loadDefaultData() {
+            if (!localStorage.getItem('ntandoMods_initialized')) {
+                // Default services
+                services = [
+                    {
+                        id: 1,
+                        name: "GTA V Mod Menu",
+                        description: "Premium mod menu with advanced features for GTA V Online",
+                        price: "$29.99",
+                        icon: "fas fa-car",
+                        image: "https://via.placeholder.com/300x200/667eea/ffffff?text=GTA+V+Mods",
+                        category: "modding",
+                        active: true
+                    },
+                    {
+                        id: 2,
+                        name: "Fortnite Cheats",
+                        description: "Undetectable aimbot and ESP for Fortnite",
+                        price: "$19.99",
+                        icon: "fas fa-crosshairs",
+                        image: "https://via.placeholder.com/300x200/764ba2/ffffff?text=Fortnite+Cheats",
+                        category: "cheats",
+                        active: true
+                    },
+                    {
+                        id: 3,
+                        name: "Premium Accounts",
+                        description: "High-level gaming accounts with rare items",
+                        price: "$49.99",
+                        icon: "fas fa-user-crown",
+                        image: "https://via.placeholder.com/300x200/f093fb/ffffff?text=Premium+Accounts",
+                        category: "accounts",
+                        active: true
+                    },
+                    {
+                        id: 4,
+                        name: "Custom Scripts",
+                        description: "Personalized gaming scripts for various games",
+                        price: "$15.99",
+                        icon: "fas fa-code",
+                        image: "https://via.placeholder.com/300x200/f5576c/ffffff?text=Custom+Scripts",
+                        category: "scripts",
+                        active: true
+                    }
+                ];
+
+                // Default contact methods
+                contactMethods = [
+                    {
+                        id: 1,
+                        type: "discord",
+                        label: "Discord Support",
+                        value: "NtandoMods#1234",
+                        icon: "fab fa-discord"
+                    },
+                    {
+                        id: 2,
+                        type: "telegram",
+                        label: "Telegram",
+                        value: "@NtandoMods",
+                        icon: "fab fa-telegram"
+                    },
+                    {
+                        id: 3,
+                        type: "whatsapp",
+                        label: "WhatsApp",
+                        value: "+263777124998",
+                        icon: "fab fa-whatsapp"
+                    }
+                ];
+
+                // Default payment methods
+                paymentMethods = [
+                    {
+                        id: 1,
+                        type: "ecocash",
+                        label: "EcoCash Payment",
+                        details: "263777124998",
+                        icon: "fas fa-mobile-alt"
+                    },
+                    {
+                        id: 2,
+                        type: "ibucks",
+                        label: "iBucks Payment",
+                        details: "263777124998",
+                        icon: "fas fa-dollar-sign"
+                    },
+                    {
+                        id: 3,
+                        type: "airtime",
+                        label: "Airtime Payment",
+                        details: "263777124998",
+                        icon: "fas fa-phone"
+                    }
+                ];
+
+                saveData();
+                localStorage.setItem('ntandoMods_initialized', 'true');
+            }
+        }
+
+        // Create floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.width = Math.random() * 10 + 5 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Audio controls
+        function toggleAudio() {
+            const audio = document.getElementById('bgAudio');
+            const btn = document.getElementById('audioBtn');
+            
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+            } else {
+                audio.pause();
+                btn.innerHTML = '<i class="fas fa-volume-mute"></i>';
+            }
+        }
+
+        function changeVolume(delta) {
+            const audio = document.getElementById('bgAudio');
+            audio.volume = Math.max(0, Math.min(1, audio.volume + delta));
+        }
+
+        // Admin functions
+        function openAdminPanel() {
+            if (isLoggedIn) {
+                document.getElementById('adminModal').style.display = 'block';
+                loadAdminData();
+            } else {
+                document.getElementById('loginModal').style.display = 'block';
+            }
+        }
+
+        function adminLogin(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === settings.adminPassword) {
+                isLoggedIn = true;
+                closeModal('loginModal');
+                showNotification('Login successful!', 'success');
+                
+                // Update last login
+                localStorage.setItem('lastLogin', new Date().toLocaleString());
+                
+                setTimeout(() => {
+                    openAdminPanel();
+                }, 500);
+            } else {
+                showNotification('Invalid credentials!', 'error');
+            }
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Tab management
+        function showTab(tabId) {
+            // Hide all tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.style.display = 'none');
+            
+            // Show selected tab
+            document.getElementById(tabId).style.display = 'block';
+            
+            // Load tab-specific data
+            if (tabId === 'dashboard-tab') {
+                updateStats();
+            } else if (tabId === 'services-tab') {
+                loadServicesList();
+            } else if (tabId === 'contact-tab') {
+                loadContactMethodsList();
+            } else if (tabId === 'settings-tab') {
+                loadSettings();
+            }
+        }
+
+        // Service management
+        function addService(event) {
+            event.preventDefault();
+            
+            const service = {
+                id: Date.now(),
+                name: document.getElementById('serviceName').value,
+                description: document.getElementById('serviceDescription').value,
+                price: document.getElementById('servicePrice').value,
+                icon: document.getElementById('serviceIcon').value,
+                image: document.getElementById('serviceImage').value,
+                category: document.getElementById('serviceCategory').value,
+                active: true
+            };
+
+            services.push(service);
+            saveData();
+            renderServices();
+            
+            // Reset form
+            event.target.reset();
+            
+            showNotification('Service added successfully!', 'success');
+            updateStats();
+        }
+
+        function deleteService(id) {
+            if (confirm('Are you sure you want to delete this service?')) {
+                services = services.filter(service => service.id !== id);
+                saveData();
+                renderServices();
+                loadServicesList();
+                showNotification('Service deleted successfully!', 'success');
+                updateStats();
+            }
+        }
+
+        function toggleService(id) {
+            const service = services.find(s => s.id === id);
+            if (service) {
+                service.active = !service.active;
+                saveData();
+                renderServices();
+                loadServicesList();
+                showNotification(`Service ${service.active ? 'activated' : 'deactivated'}!`, 'success');
+                updateStats();
+            }
+        }
+
+        // Contact methods management
+        function addContactMethod(event) {
+            event.preventDefault();
+            
+            const contactMethod = {
+                id: Date.now(),
+                type: document.getElementById('contactType').value,
+                label: document.getElementById('contactLabel').value,
+                value: document.getElementById('contactValue').value,
+                icon: document.getElementById('contactIcon').value || getDefaultIcon(document.getElementById('contactType').value)
+            };
+
+            contactMethods.push(contactMethod);
+            saveData();
+            
+            // Reset form
+            event.target.reset();
+            
+            showNotification('Contact method added successfully!', 'success');
+            loadContactMethodsList();
+            updateStats();
+        }
+
+        function deleteContactMethod(id) {
+            if (confirm('Are you sure you want to delete this contact method?')) {
+                contactMethods = contactMethods.filter(method => method.id !== id);
+                saveData();
+                loadContactMethodsList();
+                showNotification('Contact method deleted successfully!', 'success');
+                updateStats();
+            }
+        }
+
+        // Payment methods management
+        function addPaymentMethod(event) {
+            event.preventDefault();
+            
+            const paymentMethod = {
+                id: Date.now(),
+                type: document.getElementById('paymentType').value,
+                label: document.getElementById('paymentLabel').value,
+                details: document.getElementById('paymentDetails').value,
+                icon: document.getElementById('paymentIcon').value || getDefaultPaymentIcon(document.getElementById('paymentType').value)
+            };
+
+            paymentMethods.push(paymentMethod);
+            saveData();
+            
+            // Reset form
+            event.target.reset();
+            
+            showNotification('Payment method added successfully!', 'success');
+            loadPaymentMethodsList();
+        }
+
+        function deletePaymentMethod(id) {
+            if (confirm('Are you sure you want to delete this payment method?')) {
+                paymentMethods = paymentMethods.filter(method => method.id !== id);
+                saveData();
+                loadPaymentMethodsList();
+                showNotification('Payment method deleted successfully!', 'success');
+            }
+        }
+
+        // Get default icons
+        function getDefaultIcon(type) {
+            const icons = {
+                discord: 'fab fa-discord',
+                telegram: 'fab fa-telegram',
+                whatsapp: 'fab fa-whatsapp',
+                email: 'fas fa-envelope',
+                phone: 'fas fa-phone',
+                website: 'fas fa-globe'
+            };
+            return icons[type] || 'fas fa-comment';
+        }
+
+        function getDefaultPaymentIcon(type) {
+            const icons = {
+                ecocash: 'fas fa-mobile-alt',
+                ibucks: 'fas fa-dollar-sign',
+                airtime: 'fas fa-phone',
+                paypal: 'fab fa-paypal',
+                bitcoin: 'fab fa-bitcoin',
+                bank: 'fas fa-university'
+            };
+            return icons[type] || 'fas fa-credit-card';
+        }
+
+        // Render functions
+        function renderServices() {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = '';
+
+            const activeServices = services.filter(service => service.active);
+
+            activeServices.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <div class="service-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    ${service.image ? `<img src="${service.image}" alt="${service.name}" class="service-image" onerror="this.style.display='none'">` : ''}
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <div class="price" style="font-size: 1.5rem; font-weight: bold; color: #4ecdc4; margin: 1rem 0;">
+                        ${service.price}
+                    </div>
+                    <div class="contact-info">
+                        <h4><i class="fas fa-phone"></i> Contact Methods</h4>
+                        ${contactMethods.map(method => `
+                            <div class="contact-method" onclick="copyToClipboard('${method.value}')">
+                                <i class="${method.icon}"></i>
+                                <span>${method.label}: ${method.value}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="contact-info">
+                        <h4><i class="fas fa-credit-card"></i> Payment Methods</h4>
+                        ${paymentMethods.map(method => `
+                            <div class="contact-method" onclick="copyToClipboard('${method.details}')">
+                                <i class="${method.icon}"></i>
+                                <span>${method.label}: ${method.details}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="btn" onclick="orderService('${service.name}')">
+                        <i class="fas fa-shopping-cart"></i> Order Now
+                    </button>
+                `;
+                grid.appendChild(serviceCard);
+            });
+        }
+
+        function loadServicesList() {
+            const list = document.getElementById('servicesList');
+            list.innerHTML = '';
+
+            services.forEach(service => {
+                const serviceItem = document.createElement('div');
+                serviceItem.className = 'service-item';
+                serviceItem.innerHTML = `
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <h4><i class="${service.icon}"></i> ${service.name}</h4>
+                            <p>${service.description}</p>
+                            <p><strong>Price:</strong> ${service.price}</p>
+                            <p><strong>Category:</strong> ${service.category}</p>
+                        </div>
+                        <div>
+                            <button class="service-toggle ${service.active ? 'active' : ''}" onclick="toggleService(${service.id})">
+                                ${service.active ? 'Active' : 'Inactive'}
+                            </button>
+                            <button class="btn" onclick="deleteService(${service.id})" style="background: linear-gradient(45deg, #ff6b6b, #ff8e53); margin-left: 0.5rem;">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                list.appendChild(serviceItem);
+            });
+        }
+
+        function loadContactMethodsList() {
+            const list = document.getElementById('contactMethodsList');
+            list.innerHTML = '';
+
+            contactMethods.forEach(method => {
+                const methodItem = document.createElement('div');
+                methodItem.className = 'contact-method-item';
+                methodItem.innerHTML = `
+                    <div>
+                        <i class="${method.icon}"></i>
+                        <strong>${method.label}</strong><br>
+                        <span>${method.value}</span>
+                    </div>
+                    <button class="btn" onclick="deleteContactMethod(${method.id})" style="background: linear-gradient(45deg, #ff6b6b, #ff8e53);">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                list.appendChild(methodItem);
+            });
+        }
+
+        function loadPaymentMethodsList() {
+            const list = document.getElementById('paymentMethodsList');
+            if (!list) return;
+            
+            list.innerHTML = '';
+
+            paymentMethods.forEach(method => {
+                const methodItem = document.createElement('div');
+                methodItem.className = 'contact-method-item';
+                methodItem.innerHTML = `
+                    <div>
+                        <i class="${method.icon}"></i>
+                        <strong>${method.label}</strong><br>
+                        <span>${method.details}</span>
+                    </div>
+                    <button class="btn" onclick="deletePaymentMethod(${method.id})" style="background: linear-gradient(45deg, #ff6b6b, #ff8e53);">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                list.appendChild(methodItem);
+            });
+        }
+
+        function loadSettings() {
+            document.getElementById('siteTitle').value = settings.siteTitle;
+            document.getElementById('siteSubtitle').value = settings.siteSubtitle;
+            document.getElementById('siteDescription').value = settings.siteDescription;
+            document.getElementById('siteDomain').value = settings.domain;
+            
+            // Load payment methods in settings
+            loadPaymentMethodsList();
+        }
+
+        // Settings functions
+        function updatePassword() {
+            const newPassword = document.getElementById('newPassword').value;
+            if (newPassword.length < 6) {
+                showNotification('Password must be at least 6 characters long!', 'error');
+                return;
+            }
+            
+            settings.adminPassword = newPassword;
+            saveData();
+            document.getElementById('newPassword').value = '';
+            showNotification('Password updated successfully!', 'success');
+        }
+
+        function updateDomain() {
+            const domain = document.getElementById('siteDomain').value;
+            settings.domain = domain;
+            saveData();
+            showNotification('Domain updated successfully!', 'success');
+        }
+
+        function updateSiteContent() {
+            settings.siteTitle = document.getElementById('siteTitle').value;
+            settings.siteSubtitle = document.getElementById('siteSubtitle').value;
+            settings.siteDescription = document.getElementById('siteDescription').value;
+            
+            // Update the actual site content
+            document.getElementById('siteLogo').innerHTML = `<i class="fas fa-gamepad"></i> ${settings.siteTitle}`;
+            document.getElementById('heroTitle').textContent = settings.siteTitle;
+            document.getElementById('heroSubtitle').textContent = settings.siteSubtitle;
+            document.getElementById('heroDescription').textContent = settings.siteDescription;
+            document.title = `${settings.siteTitle} - ${settings.siteSubtitle}`;
+            
+            saveData();
+            showNotification('Site content updated successfully!', 'success');
+        }
+
+        function changeTheme(theme) {
+            settings.theme = theme;
+            saveData();
+            
+            const bgAnimation = document.getElementById('bgAnimation');
+            const themes = {
+                default: 'linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c)',
+                sunset: 'linear-gradient(45deg, #ff9a9e, #fecfef, #ffecd2, #fcb69f)',
+                ocean: 'linear-gradient(45deg, #667eea, #764ba2, #89f7fe, #66a6ff)',
+                forest: 'linear-gradient(45deg, #11998e, #38ef7d, #56ab2f, #a8edea)',
+                dark: 'linear-gradient(45deg, #2c3e50, #34495e, #2c3e50, #4a6741)'
+            };
+            
+            bgAnimation.style.background = themes[theme];
+            
+            // Update active theme indicator
+            document.querySelectorAll('.theme-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            document.querySelector(`.theme-${theme}`).classList.add('active');
+            
+            showNotification(`Theme changed to ${theme}!`, 'success');
+        }
+
+        // Utility functions
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification(`Copied: ${text}`, 'success');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showNotification(`Copied: ${text}`, 'success');
+            });
+        }
+
+        function orderService(serviceName) {
+            const message = `Hi! I'm interested in ordering: ${serviceName}`;
+            const whatsappNumber = contactMethods.find(method => method.type === 'whatsapp')?.value || '263777124998';
+            const whatsappUrl = `https://wa.me/${whatsappNumber.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+
+        function updateStats() {
+            document.getElementById('totalServices').textContent = services.length;
+            document.getElementById('activeServices').textContent = services.filter(s => s.active).length;
+            document.getElementById('totalViews').textContent = localStorage.getItem('pageViews') || '0';
+            document.getElementById('contactMethods').textContent = contactMethods.length;
+            document.getElementById('lastLogin').textContent = localStorage.getItem('lastLogin') || 'Never';
+            document.getElementById('servicesToday').textContent = services.filter(s => {
+                const today = new Date().toDateString();
+                const serviceDate = new Date(s.id).toDateString();
+                return today === serviceDate;
+            }).length;
+        }
+
+        // Data management
+        function saveData() {
+            const data = {
+                services,
+                contactMethods,
+                paymentMethods,
+                settings
+            };
+            localStorage.setItem('ntandoMods_data', JSON.stringify(data));
+        }
+
+        function loadData() {
+            const savedData = localStorage.getItem('ntandoMods_data');
+            if (savedData) {
+                const data = JSON.parse(savedData);
+                services = data.services || [];
+                contactMethods = data.contactMethods || [];
+                paymentMethods = data.paymentMethods || [];
+                settings = { ...settings, ...data.settings };
+            }
+            renderServices();
+        }
+
+        function loadAdminData() {
+            updateStats();
+            loadServicesList();
+            loadContactMethodsList();
+            loadSettings();
+        }
+
+        // Backup functions
+        function exportData() {
+            const data = {
+                services,
+                contactMethods,
+                paymentMethods,
+                settings,
+                exportDate: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ntando-mods-backup-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Data exported successfully!', 'success');
+        }
+
+        function importData() {
+            document.getElementById('importFile').click();
+        }
+
+        function handleImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    
+                    if (confirm('This will replace all current data. Are you sure?')) {
+                        services = data.services || [];
+                        contactMethods = data.contactMethods || [];
+                        paymentMethods = data.paymentMethods || [];
+                        settings = { ...settings, ...data.settings };
+                        
+                        saveData();
+                        renderServices();
+                        loadAdminData();
+                        
+                        showNotification('Data imported successfully!', 'success');
+                    }
+                } catch (error) {
+                    showNotification('Invalid file format!', 'error');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function resetServices() {
+            if (confirm('Are you sure you want to delete all services? This cannot be undone!')) {
+                services = [];
+                saveData();
+                renderServices();
+                loadServicesList();
+                updateStats();
+                showNotification('All services deleted!', 'warning');
+            }
+        }
+
+        function resetAll() {
+            if (confirm('Are you sure you want to reset everything? This will delete all data and cannot be undone!')) {
+                localStorage.removeItem('ntandoMods_data');
+                localStorage.removeItem('ntandoMods_initialized');
+                location.reload();
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Click effect
+        document.addEventListener('click', function(e) {
+            const clickEffect = document.createElement('div');
+            clickEffect.style.position = 'fixed';
+            clickEffect.style.left = e.clientX + 'px';
+            clickEffect.style.top = e.clientY + 'px';
+            clickEffect.style.width = '10px';
+            clickEffect.style.height = '10px';
+                        clickEffect.style.background = 'rgba(255, 255, 255, 0.6)';
+            clickEffect.style.borderRadius = '50%';
+            clickEffect.style.pointerEvents = 'none';
+            clickEffect.style.transform = 'translate(-50%, -50%)';
+            clickEffect.style.animation = 'clickRipple 0.6s ease-out forwards';
+            clickEffect.style.zIndex = '9999';
+            
+            document.body.appendChild(clickEffect);
+            
+            setTimeout(() => {
+                document.body.removeChild(clickEffect);
+            }, 600);
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            // Ctrl + Alt + A to open admin panel
+            if (e.ctrlKey && e.altKey && e.key === 'a') {
+                e.preventDefault();
+                openAdminPanel();
+            }
+            
+            // Escape to close modals
+            if (e.key === 'Escape') {
+                closeModal('loginModal');
+                closeModal('adminModal');
+            }
+        });
+
+        // Auto-save functionality
+        setInterval(() => {
+            if (isLoggedIn) {
+                saveData();
+            }
+        }, 30000); // Auto-save every 30 seconds
+
+        // Service search functionality
+        function searchServices() {
+            const searchTerm = document.getElementById('serviceSearch')?.value.toLowerCase() || '';
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                const serviceName = card.querySelector('h3').textContent.toLowerCase();
+                const serviceDescription = card.querySelector('p').textContent.toLowerCase();
+                
+                if (serviceName.includes(searchTerm) || serviceDescription.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Filter services by category
+        function filterServices(category) {
+            const serviceCards = document.querySelectorAll('.service-card');
+            
+            serviceCards.forEach(card => {
+                if (category === 'all') {
+                    card.style.display = 'block';
+                } else {
+                    const serviceCategory = card.dataset.category;
+                    if (serviceCategory === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Animate elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .feature-card');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('animate-in');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Initialize tooltips
+        function initTooltips() {
+            const tooltipElements = document.querySelectorAll('[data-tooltip]');
+            
+            tooltipElements.forEach(element => {
+                element.addEventListener('mouseenter', function() {
+                    const tooltip = document.createElement('div');
+                    tooltip.className = 'tooltip';
+                    tooltip.textContent = this.dataset.tooltip;
+                    tooltip.style.position = 'absolute';
+                    tooltip.style.background = 'rgba(0, 0, 0, 0.8)';
+                    tooltip.style.color = 'white';
+                    tooltip.style.padding = '5px 10px';
+                    tooltip.style.borderRadius = '4px';
+                    tooltip.style.fontSize = '12px';
+                    tooltip.style.zIndex = '10000';
+                    tooltip.style.pointerEvents = 'none';
+                    
+                    document.body.appendChild(tooltip);
+                    
+                    const rect = this.getBoundingClientRect();
+                    tooltip.style.left = rect.left + (rect.width / 2) - (tooltip.offsetWidth / 2) + 'px';
+                    tooltip.style.top = rect.top - tooltip.offsetHeight - 5 + 'px';
+                    
+                    this.tooltipElement = tooltip;
+                });
+                
+                element.addEventListener('mouseleave', function() {
+                    if (this.tooltipElement) {
+                        document.body.removeChild(this.tooltipElement);
+                        this.tooltipElement = null;
+                    }
+                });
+            });
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initTooltips();
+            animateOnScroll();
+        });
+
+        // Performance monitoring
+        function trackPerformance() {
+            const performanceData = {
+                loadTime: performance.now(),
+                servicesCount: services.length,
+                timestamp: new Date().toISOString()
+            };
+            
+            console.log('Performance Data:', performanceData);
+        }
+
+        // Error handling
+        window.addEventListener('error', function(e) {
+            console.error('JavaScript Error:', e.error);
+            showNotification('An error occurred. Please refresh the page.', 'error');
+        });
+
+        // Service worker registration for offline functionality
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('ServiceWorker registration successful');
+                    })
+                    .catch(function(err) {
+                        console.log('ServiceWorker registration failed');
+                    });
+            });
+        }
+
+        // Analytics tracking
+        function trackEvent(eventName, eventData = {}) {
+            const event = {
+                name: eventName,
+                data: eventData,
+                timestamp: new Date().toISOString(),
+                userAgent: navigator.userAgent,
+                url: window.location.href
+            };
+            
+            // Store in localStorage for now (in production, send to analytics service)
+            const events = JSON.parse(localStorage.getItem('analytics_events') || '[]');
+            events.push(event);
+            
+            // Keep only last 100 events
+            if (events.length > 100) {
+                events.splice(0, events.length - 100);
+            }
+            
+            localStorage.setItem('analytics_events', JSON.stringify(events));
+        }
+
+        // Track page view
+        trackEvent('page_view', {
+            page: 'home',
+            referrer: document.referrer
+        });
+
+        // Enhanced service ordering with analytics
+        function orderServiceEnhanced(serviceName) {
+            trackEvent('service_order_initiated', {
+                service: serviceName,
+                timestamp: new Date().toISOString()
+            });
+            
+            orderService(serviceName);
+        }
+
+        // Bulk operations for admin
+        function bulkToggleServices(active) {
+            services.forEach(service => {
+                service.active = active;
+            });
+            
+            saveData();
+            renderServices();
+            loadServicesList();
+            updateStats();
+            
+            showNotification(`All services ${active ? 'activated' : 'deactivated'}!`, 'success');
+        }
+
+        function bulkDeleteServices() {
+            if (confirm('Are you sure you want to delete ALL services? This cannot be undone!')) {
+                services = [];
+                saveData();
+                renderServices();
+                loadServicesList();
+                updateStats();
+                showNotification('All services deleted!', 'warning');
+            }
+        }
+
+        // Advanced search with filters
+        function advancedSearch() {
+            const searchTerm = document.getElementById('advancedSearch')?.value.toLowerCase() || '';
+            const categoryFilter = document.getElementById('categoryFilter')?.value || 'all';
+            const priceFilter = document.getElementById('priceFilter')?.value || 'all';
+            
+            const filteredServices = services.filter(service => {
+                const matchesSearch = service.name.toLowerCase().includes(searchTerm) || 
+                                    service.description.toLowerCase().includes(searchTerm);
+                
+                const matchesCategory = categoryFilter === 'all' || service.category === categoryFilter;
+                
+                let matchesPrice = true;
+                if (priceFilter !== 'all') {
+                    const price = parseFloat(service.price.replace(/[^0-9.]/g, ''));
+                    switch (priceFilter) {
+                        case 'under20':
+                            matchesPrice = price < 20;
+                            break;
+                        case '20to50':
+                            matchesPrice = price >= 20 && price <= 50;
+                            break;
+                        case 'over50':
+                            matchesPrice = price > 50;
+                            break;
+                    }
+                }
+                
+                return matchesSearch && matchesCategory && matchesPrice && service.active;
+            });
+            
+            renderFilteredServices(filteredServices);
+        }
+
+        function renderFilteredServices(filteredServices) {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = '';
+            
+            if (filteredServices.length === 0) {
+                grid.innerHTML = '<p style="text-align: center; color: #666; grid-column: 1/-1;">No services found matching your criteria.</p>';
+                return;
+            }
+            
+            filteredServices.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = 'service-card';
+                serviceCard.innerHTML = `
+                    <div class="service-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    ${service.image ? `<img src="${service.image}" alt="${service.name}" class="service-image" onerror="this.style.display='none'">` : ''}
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <div class="price" style="font-size: 1.5rem; font-weight: bold; color: #4ecdc4; margin: 1rem 0;">
+                        ${service.price}
+                    </div>
+                    <div class="contact-info">
+                        <h4><i class="fas fa-phone"></i> Contact Methods</h4>
+                        ${contactMethods.map(method => `
+                            <div class="contact-method" onclick="copyToClipboard('${method.value}')">
+                                <i class="${method.icon}"></i>
+                                <span>${method.label}: ${method.value}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div class="contact-info">
+                        <h4><i class="fas fa-credit-card"></i> Payment Methods</h4>
+                        ${paymentMethods.map(method => `
+                            <div class="contact-method" onclick="copyToClipboard('${method.details}')">
+                                <i class="${method.icon}"></i>
+                                <span>${method.label}: ${method.details}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <button class="btn" onclick="orderServiceEnhanced('${service.name}')">
+                        <i class="fas fa-shopping-cart"></i> Order Now
+                    </button>
+                `;
+                grid.appendChild(serviceCard);
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Track performance
+            trackPerformance();
+            
+            // Initialize the site
+            loadData();
+            createParticles();
+            updateStats();
+            loadDefaultData();
+            
+            // Update page views
+            let views = parseInt(localStorage.getItem('pageViews') || '0');
+            views++;
+            localStorage.setItem('pageViews', views.toString());
+            
+            // Auto-play audio with user interaction
+            document.addEventListener('click', function() {
+                const audio = document.getElementById('bgAudio');
+                if (audio && audio.paused) {
+                    audio.play().catch(e => console.log('Audio autoplay prevented'));
+                }
+            }, { once: true });
+            
+            // Initialize tooltips and animations
+            initTooltips();
+            animateOnScroll();
+            
+            // Show welcome message
+            setTimeout(() => {
+                showNotification('Welcome to Ntando Mods! 🎮', 'success');
+            }, 1000);
+        });
+
+        // Final initialization
+        console.log('Ntando Mods Website Loaded Successfully! 🚀');
+    </script>
+
+    <!-- Additional CSS for animations and effects -->
+    <style>
+        @keyframes clickRipple {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(4);
+                opacity: 0;
+            }
+        }
+
+        .animate-in {
+            animation: slideInUp 0.6s ease-out forwards;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tooltip {
+            animation: fadeIn 0.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-method:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .admin-content {
+                padding: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success/Error states */
+        .success-state {
+            color: #4ecdc4;
+            animation: pulse 2s infinite;
+        }
+
+        .error-state {
+            color: #ff6b6b;
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</body>
+</html>
