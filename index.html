@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ntando Mods Pro - Premium Bot Services & Website Creator</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐞</text></svg>">
+    
+    <!-- CSS Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+        }
+
+        .admin-btn {
+            background: #ff6b6b;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .admin-btn:hover {
+            background: #ff5252;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 2rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Services Section */
+        .services {
+            background: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .services h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #333;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        /* Website Creator Section */
+        .website-creator {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .creator-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Embedded Sites Section */
+        .embedded-sites {
+            background: white;
+            padding: 4rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+        }
+
+        .sites-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .site-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .site-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .site-preview {
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .site-info {
+            padding: 1rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: black;
+        }
+
+        /* Admin Panel Styles */
+        .admin-panel {
+            background: #2c3e50;
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+
+        .admin-section {
+            margin-bottom: 2rem;
+        }
+
+        .admin-section h3 {
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 1rem;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .services-grid,
+            .creator-features,
+            .sites-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 1rem;
+            border-radius: 5px;
+            color: white;
+            z-index: 3000;
+            transform: translateX(400px);
+            transition: transform 0.3s;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: #27ae60;
+        }
+
+        .notification.error {
+            background: #e74c3c;
+        }
+
+        .notification.info {
+            background: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">🐞 Ntando Mods Pro</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#creator">Website Creator</a></li>
+                <li><a href="#sites">Browse Sites</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="admin-btn" onclick="toggleAdmin()">Admin Panel</button>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Welcome to Ntando Mods Pro</h1>
+                <p>Premium WhatsApp Bot Services, Website Creation & More</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn btn-primary">Explore Services</a>
+                    <a href="#creator" class="btn btn-secondary">Create Website</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Our Premium Services</h2>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Services will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Website Creator Section -->
+        <section id="creator" class="website-creator">
+            <div class="container">
+                <h2>🚀 Website Creator</h2>
+                <p>Create stunning websites with our advanced builder</p>
+                <div class="creator-features">
+                    <div class="feature-card">
+                        <h3>🎨 Drag & Drop Builder</h3>
+                        <p>Easy-to-use visual editor</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📱 Mobile Responsive</h3>
+                        <p>Works perfectly on all devices</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>⚡ Fast Hosting</h3>
+                        <p>Lightning-fast loading speeds</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔒 SSL Security</h3>
+                        <p>Secure HTTPS encryption</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="openWebsiteBuilder()">Start Building</button>
+            </div>
+        </section>
+
+        <!-- Embedded Sites Section -->
+        <section id="sites" class="embedded-sites">
+            <div class="container">
+                <h2>Browse Websites</h2>
+                <p>Explore websites without leaving our platform</p>
+                <div class="sites-grid" id="sitesGrid">
+                    <!-- Sites will be loaded here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Admin Panel Modal -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeAdmin()">×</span>
+            <h2>🔧 Admin Panel</h2>
+            
+            <div class="admin-panel">
+                <!-- Service Management -->
+                <div class="admin-section">
+                    <h3>📋 Manage Services</h3>
+                    <div class="form-group">
+                        <label>Service Name:</label>
+                        <input type="text" id="serviceName" placeholder="Enter service name">
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea id="serviceDesc" placeholder="Enter service description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Price:</label>
+                        <input type="text" id="servicePrice" placeholder="e.g., $29.99">
+                    </div>
+                    <div class="form-group">
+                        <label>Icon:</label>
+                        <input type="text" id="serviceIcon" placeholder="Enter emoji or icon">
+                    </div>
+                    <button class="btn btn-primary" onclick="addService()">Add Service</button>
+                </div>
+
+                <!-- Website Management -->
+                <div class="admin-section">
+                    <h3>🌐 Manage Websites</h3>
+                    <div class="form-group">
+                        <label>Website Name:</label>
+                        <input type="text" id="siteName" placeholder="Enter website name">
+                    </div>
+                    <div class="form-group">
+                        <label>Website URL:</label>
+                        <input type="url" id="siteUrl" placeholder="https://example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Description:</label>
+                        <textarea id="siteDesc" placeholder="Enter website description"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Category:</label>
+                        <select id="siteCategory">
+                            <option value="entertainment">Entertainment</option>
+                            <option value="education">Education</option>
+                            <option value="business">Business</option>
+                            <option value="technology">Technology</option>
+                            <option value="social">Social Media</option>
+                            <option value="news">News</option>
+                            <option value="gaming">Gaming</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="addWebsite()">Add Website</button>
+                </div>
+
+                <!-- Website Builder -->
+                <div class="admin-section">
+                    <h3>🏗️ Website Builder</h3>
+                    <div class="form-group">
+                        <label>Template:</label>
+                        <select id="templateSelect">
+                            <option value="business">Business Template</option>
+                            <option value="portfolio">Portfolio Template</option>
+                            <option value="blog">Blog Template</option>
+                            <option value="ecommerce">E-commerce Template</option>
+                            <option value="landing">Landing Page</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Site Title:</label>
+                        <input type="text" id="siteTitle" placeholder="Enter site title">
+                    </div>
+                    <div class="form-group">
+                        <label>Domain Name:</label>
+                        <input type="text" id="domainName" placeholder="mysite">
+                        <small>.ntandomods.pro</small>
+                    </div>
+                    <button class="btn btn-primary" onclick="createWebsite()">Create Website</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Site Viewer Modal -->
+    <div id="siteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSiteViewer()">×</span>
+            <h3 id="siteModalTitle">Website Viewer</h3>
+            <div class="iframe-container">
+                <iframe id="siteFrame" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Website Builder Modal -->
+    <div id="builderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBuilder()">×</span>
+            <h2>🚀 Website Builder</h2>
+            <div id="builderContent">
+                <div class="admin-section">
+                    <h3>Choose Your Template</h3>
+                    <div class="creator-features">
+                        <div class="feature-card" onclick="selectTemplate('business')">
+                            <h3>🏢 Business</h3>
+                            <p>Professional business website</p>
+                        </div>
+                        <div class="feature-card" onclick="selectTemplate('portfolio')">
+                            <h3>🎨 Portfolio</h3>
+                            <p>Showcase your work</p>
+                        </div>
+                        <div class="feature-card" onclick="selectTemplate('blog')">
+                            <h3>📝 Blog</h3>
+                            <p>Share your thoughts</p>
+                        </div>
+                        <div class="feature-card" onclick="selectTemplate('ecommerce')">
+                            <h3>🛒 E-commerce</h3>
+                            <p>Online store</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Data Storage
+        let services = JSON.parse(localStorage.getItem('ntando_services')) || [
+            {
+                id: 1,
+                name: "LADYBUG-PRO Bot",
+                description: "Premium WhatsApp bot with AI features, auto-reply, and group management",
+                price: "$29.99",
+                icon: "🤖"
+            },
+            {
+                id: 2,
+                name: "Custom Bot Development",
+                description: "Get a personalized WhatsApp bot tailored to your needs",
+                price: "$99.99",
+                icon: "⚙️"
+            },
+            {
+                id: 3,
+                name: "Website Creation",
+                description: "Professional website design and development services",
+                price: "$149.99",
+                icon: "🌐"
+            }
+        ];
+
+        let websites = JSON.parse(localStorage.getItem('ntando_websites')) || [
+            {
+                id: 1,
+                name: "YouTube",
+                url: "https://youtube.com",
+                description: "Watch videos and entertainment content",
+                category: "entertainment",
+                icon: "📺"
+            },
+            {
+                id: 2,
+                name: "GitHub",
+                url: "https://github.com",
+                description: "Code repository and collaboration platform",
+                category: "technology",
+                icon: "💻"
+            },
+            {
+                id: 3,
+                name: "ChatGPT",
+                url: "https://chat.openai.com",
+                description: "AI-powered chat assistant",
+                category: "technology",
+                icon: "🤖"
+            }
+        ];
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadServices();
+            loadWebsites();
+        });
+
+        // Load Services
+        function loadServices() {
+            const grid = document.getElementById('servicesGrid');
+            grid.innerHTML = '';
+            
+            services.forEach(service => {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.innerHTML = `
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">${service.icon}</div>
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+                    <div class="price">${service.price}</div>
+                    <button class="btn btn-secondary" onclick="orderService(${service.id})">Order Now</button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Load Websites
+        function loadWebsites() {
+            const grid = document.getElementById('sitesGrid');
+            grid.innerHTML = '';
+            
+            websites.forEach(site => {
+                const card = document.createElement('div');
+                card.className = 'site-card';
+                card.innerHTML = `
+                    <div class="site-preview">${site.icon}</div>
+                    <div class="site-info">
+                        <h3>${site.name}</h3>
+                        <p>${site.description}</p>
+                        <small>Category: ${site.category}</small>
+                        <br><br>
+                        <button class="btn btn-primary" onclick="openSite('${site.url}', '${site.name}')">Visit Site</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Admin Panel Functions
+        function toggleAdmin() {
+            document.getElementById('adminModal').style.display = 'block';
+        }
+
+        function closeAdmin() {
+            document.getElementById('adminModal').style.display = 'none';
+        }
+
+        // Add Service
+        function addService() {
+            const name = document.getElementById('serviceName').value;
+            const desc = document.getElementById('serviceDesc').value;
+            const price = document.getElementById('servicePrice').value;
+            const icon = document.getElementById('serviceIcon').value;
+
+            if (!name || !desc || !price || !icon) {
+                showNotification('Please fill all fields', 'error');
+                return;
+            }
+
+            const newService = {
+                id: Date.now(),
+                name: name,
+                description: desc,
+                price: price,
+                icon: icon
+            };
+
+            services.push(newService);
+            localStorage.setItem('ntando_services', JSON.stringify(services));
+            loadServices();
+            
+            // Clear form
+            document.getElementById('serviceName').value = '';
+            document.getElementById('serviceDesc').value = '';
+            document.getElementById('servicePrice').value = '';
+            document.getElementById('serviceIcon').value = '';
+
+            showNotification('Service added successfully!', 'success');
+        }
+
+        // Add Website
+        function addWebsite() {
+            const name = document.getElementById('siteName').value;
+            const url = document.getElementById('siteUrl').value;
+            const desc = document.getElementById('siteDesc').value;
+            const category = document.getElementById('siteCategory').value;
+
+            if (!name || !url || !desc) {
+                showNotification('Please fill all required fields', 'error');
+                return;
+            }
+
+            const newSite = {
+                id: Date.now(),
+                name: name,
+                url: url,
+                description: desc,
+                category: category,
+                icon: getCategoryIcon(category)
+            };
+
+            websites.push(newSite);
+            localStorage.setItem('ntando_websites', JSON.stringify(websites));
+            loadWebsites();
+            
+            // Clear form
+            document.getElementById('siteName').value = '';
+            document.getElementById('siteUrl').value = '';
+            document.getElementById('siteDesc').value = '';
+
+            showNotification('Website added successfully!', 'success');
+        }
+
+        // Get Category Icon
+        function getCategoryIcon(category) {
+            const icons = {
+                entertainment: '🎬',
+                education: '📚',
+                business: '💼',
+                technology: '💻',
+                social: '📱',
+                news: '📰',
+                gaming: '🎮',
+                other: '🌐'
+            };
+            return icons[category] || '🌐';
+        }
+
+        // Open Site in Modal
+        function openSite(url, name) {
+            document.getElementById('siteModalTitle').textContent = name;
+            document.getElementById('siteFrame').src = url;
+            document.getElementById('siteModal').style.display = 'block';
+        }
+
+        function closeSiteViewer() {
+            document.getElementById('siteModal').style.display = 'none';
+            document.getElementById('siteFrame').src = '';
+        }
+
+        // Website Builder Functions
+        function openWebsiteBuilder() {
+            document.getElementById('builderModal').style.display = 'block';
+        }
+
+        function closeBuilder() {
+            document.getElementById('builderModal').style.display = 'none';
+        }
+
+        function selectTemplate(template) {
+            showNotification(`Selected ${template} template!`, 'info');
+            // Here you would implement the actual website builder
+            setTimeout(() => {
+                showNotification('Website builder coming soon!', 'info');
+            }, 1000);
+        }
+
+        // Create Website
+        function createWebsite() {
+            const template = document.getElementById('templateSelect').value;
+            const title = document.getElementById('siteTitle').value;
+            const domain = document.getElementById('domainName').value;
+
+            if (!title || !domain) {
+                showNotification('Please fill all fields', 'error');
+                return;
+            }
+
+            showNotification('Creating website...', 'info');
+            
+            // Simulate website creation
+            setTimeout(() => {
+                const websiteUrl = `https://${domain}.ntandomods.pro`;
+                showNotification(`Website created successfully! URL: ${websiteUrl}`, 'success');
+                
+                // Add to websites list
+                const newSite = {
+                    id: Date.now(),
+                    name: title,
+                    url: websiteUrl,
+                    description: `Custom ${template} website`,
+                    category: 'business',
+                    icon: '🏗️'
+                };
+                
+                websites.push(newSite);
+                localStorage.setItem('ntando_websites', JSON.stringify(websites));
+                loadWebsites();
+            }, 2000);
+        }
+
+        // Order Service
+        function orderService(serviceId) {
+            const service = services.find(s => s.id === serviceId);
+            if (service) {
+                showNotification(`Ordering ${service.name}... Redirecting to WhatsApp`, 'info');
+                setTimeout(() => {
+                    window.open(`https://wa.me/911234567890?text=Hi! I want to order ${service.name} for ${service.price}`, '_blank');
+                }, 1000);
+            }
+        }
+
+        // Notification System
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Auto-save data
+        setInterval(() => {
+            localStorage.setItem('ntando_services', JSON.stringify(services));
+            localStorage.setItem('ntando_websites', JSON.stringify(websites));
+        }, 30000); // Save every 30 seconds
+
+        // Welcome message
+        setTimeout(() => {
+            showNotification('Welcome to Ntando Mods Pro! 🐞', 'success');
+        }, 1000);
+    </script>
+</body>
+</html>
